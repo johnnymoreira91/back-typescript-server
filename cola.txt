@@ -8,3 +8,4 @@ yarn add express
 ----
 
 yarn add ts-node-dev -D
+yarn add tsconfig-paths -D
