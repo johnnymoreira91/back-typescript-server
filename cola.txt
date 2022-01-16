@@ -1,0 +1,10 @@
+git init
+yarn init -y
+yarn add typescript -D
+yarn tsc --init
+
+----
+yarn add express
+----
+
+yarn add ts-node-dev -D
