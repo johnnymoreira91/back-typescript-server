@@ -9,3 +9,6 @@ yarn add express
 
 yarn add ts-node-dev -D
 yarn add tsconfig-paths -D
+
+yarn add eslint -D
+yarn eslint --init

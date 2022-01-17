@@ -42,5 +42,8 @@
   "eslint.autoFixOnSave": true,
   "editor.fontLigatures": true,
   "vsicons.projectDetection.autoReload": true,
-  "files.autoSave": "onFocusChange"
+  "files.autoSave": "onFocusChange",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
