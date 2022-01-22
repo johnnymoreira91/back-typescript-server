@@ -29,7 +29,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "git.enableSmartCommit": true,
   "workbench.colorTheme": "Material Theme Palenight High Contrast",
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "pug2html.compileOptions": {
     "doctype": "html",
     "pretty": true

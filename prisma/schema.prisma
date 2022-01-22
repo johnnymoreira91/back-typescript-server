@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  Connected
+  Disconnected
+  Error
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  active    Boolean    @default(true)
+  uuidUser  String     @unique @default(uuid())
+  name      String
+  email     String
+  password  String
+  rg        String?
+  cpf       String?
+  sexo      String?
+  sectorId  Int
+  superUser Boolean    @default(false)
+  Sector    Sector     @relation(fields: [sectorId], references: [id])
+  Bracelet  Bracelet[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("users")
+}
+
+model Bracelet {
+  id           Int      @id @default(autoincrement())
+  uuidBracelet String   @unique @default(uuid())
+  userBracelet Int
+  User         User     @relation(fields: [userBracelet], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("bracelets")
+}
+
+model Spot {
+  id        Int      @id @default(autoincrement())
+  uuidSpot  String   @unique @default(uuid())
+  spotName  String
+  sectorId  Int
+  status    Status   @default(Disconnected)
+  Sector    Sector   @relation(fields: [sectorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("spots")
+}
+
+model Sector {
+  id         Int      @id @default(autoincrement())
+  uuidSector String   @unique @default(uuid())
+  sectorName String
+  User       User[]
+  Spot       Spot[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("sectors")
+}
