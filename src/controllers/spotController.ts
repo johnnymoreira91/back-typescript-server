@@ -10,7 +10,7 @@ const prisma = new PrismaClient();
 
 export default {
   async store(req: Request<{user_id: number}, {}, {spotName: string, sectorId: number,
-     status: boolean}>, res: Response) {
+     status: string}>, res: Response) {
     const { spotName, sectorId } = req.body;
 
     try {
@@ -68,8 +68,9 @@ export default {
     }
   },
 
-  async edit(req: Request<{spotId: string}, {}, {spotName: string, sectorId: number}>, res: Response) {
-    const { spotName } = req.body;
+  async edit(req: Request<{spotId: string}, {}, {spotName: string, sectorId: number
+  status: any}>, res: Response) {
+    const { spotName, status } = req.body;
     const { spotId } = req.params;
 
     try {
@@ -91,6 +92,7 @@ export default {
           data: {
             spotName,
             sectorId: sector.id,
+            status: status || 'Error',
           },
         });
         return res.status(200).json({ spot });

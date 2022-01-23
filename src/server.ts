@@ -5,6 +5,7 @@ import express from 'express';
 import standarRoute from '@routes/standarRoute';
 import sectorRoute from '@routes/sectorRoute';
 import spotRoute from '@routes/spotRoute';
+import cors from 'cors';
 
 const app = express();
 
@@ -15,12 +16,13 @@ const app = express();
 // });
 
 app.use(express.json());
+app.use(cors());
 app.use('/', standarRoute);
 app.use('/sector', sectorRoute);
 app.use('/spot', spotRoute);
 app.use('/', express.static('src/public'));
 
-const server = app.listen(3000, () => {
+const server = app.listen(3001, () => {
   // eslint-disable-next-line no-console
   console.log('running');
 });
