@@ -27,7 +27,7 @@ jobs:
           
   deploy-dev: 
     runs-on: ubuntu-latest
-    enviroment: dev
+    enviromente: dev
       url: 'www.teste.com.br'
     needs: build
     steps:
