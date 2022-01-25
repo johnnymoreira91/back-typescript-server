@@ -45,6 +45,7 @@ export default {
   async getAllSpot(req: Request<{}, {}, {}>, res: Response) {
     try {
       const spot = await prisma.spot.findMany();
+      io.emit('spots', spot);
       return res.status(200).json(spot);
     } catch (error) {
       res.status(400).json({ msg: 'Error to find spots' });
@@ -90,6 +91,8 @@ export default {
             status: status || 'Error',
           },
         });
+        const spotC = await prisma.spot.findMany();
+        io.emit('spots', spotC);
         return res.status(200).json({ spot });
       }
       return res.status(400).json({ Error: 'error to add a new spot' });
