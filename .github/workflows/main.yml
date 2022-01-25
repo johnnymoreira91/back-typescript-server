@@ -27,11 +27,11 @@ jobs:
           
   deploy-dev: 
     runs-on: ubuntu-latest
-    enviromente: dev
+    enviroment: dev
       url: 'www.teste.com.br'
     needs: build
     steps:
-    - name: Run a multi-line script
+    - name: Run a multi-line script two
       run: |
           echo Add other actions to build,
           echo test, and deploy your project.
