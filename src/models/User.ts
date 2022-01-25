@@ -1,10 +1,33 @@
 export default class User {
   name: string;
 
-  age: number;
+  email: string;
 
-  constructor(name: string, age: number) {
+  password: string;
+
+  rg: string;
+
+  cpf: string;
+
+  sexo: string;
+
+  superUser: boolean;
+
+  constructor(
+    name: string,
+    email: string,
+    password: string,
+    rg: string,
+    cpf: string,
+    sexo: string,
+    superUser: boolean,
+  ) {
     this.name = name;
-    this.age = age;
+    this.email = email;
+    this.password = password;
+    this.rg = rg;
+    this.cpf = cpf;
+    this.sexo = sexo;
+    this.superUser = superUser;
   }
 }
