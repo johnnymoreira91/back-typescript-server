@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable consistent-return */
 // import path from 'path'
 // require("dotenv").config({
@@ -5,6 +6,7 @@
 // });
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
+// import * as io from 'socket.io';
 
 const prisma = new PrismaClient();
 
@@ -14,15 +16,6 @@ export default {
     const { spotName, sectorId } = req.body;
 
     try {
-      // const findSpot = await prisma.spot.findFirst({
-      //   where: { spotName },
-      // });
-      // console.log(findSpot);
-
-      // if (findSpot == null) {
-      //   return res.status(404).json({ msg: 'spot already exist' });
-      // }
-
       const sector = await prisma.sector.findFirst({
         where: { id: sectorId },
       });
@@ -38,11 +31,13 @@ export default {
             sectorId: sector.id,
           },
         });
+        const spotC = await prisma.spot.findMany();
+        io.emit('spots', spotC);
         return res.status(200).json({ spot });
       }
       return res.status(400).json({ Error: 'error to add a new spot' });
     } catch (error) {
-      return res.status(400).json({ Error: 'Email or Password doenst exist' });
+      return res.status(400).json({ Error: error });
     }
   },
 
