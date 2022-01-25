@@ -25,13 +25,3 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-  deploy-dev: 
-    runs-on: ubuntu-latest
-    enviroment: dev
-      url: 'www.teste.com.br'
-    needs: build
-    steps:
-    - name: Run a multi-line script two
-      run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
