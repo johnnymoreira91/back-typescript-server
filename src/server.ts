@@ -1,6 +1,9 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
-import express from 'express';
+import express, { Request, response, Response } from 'express';
 // import * as socketio from 'socket.io';
 import standarRoute from '@routes/standarRoute';
 import sectorRoute from '@routes/sectorRoute';
@@ -18,6 +21,10 @@ const server = app.listen(3001, () => {
   console.log('running');
 });
 
+export default server;
+
+app.set('io', io);
+
 global.io = require('socket.io')(server, {
   cors: {
     origin: '*',
@@ -27,7 +34,7 @@ global.io = require('socket.io')(server, {
   },
 });
 
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   app.use(cors());
@@ -38,6 +45,19 @@ app.use('/', standarRoute);
 app.use('/sector', sectorRoute);
 app.use('/spot', spotRoute);
 app.use('/', express.static('src/public'));
+
+/// ////////////////////////////// teste route ///////////////////////////
+
+app.post('/post/user', (req: Request<{spotId: string}, {}, {user: string, password: string
+  status: any}>, res: Response) => {
+  const { user, password } = req.body;
+  if (!user || !password) {
+    return res.status(400);
+  }
+  return res.status(200);
+});
+
+/// ////////////////////////////// teste route ///////////////////////////
 
 Object.keys(ifaces).forEach((ifname) => {
   let alias = 0;

@@ -96,5 +96,8 @@
   },
   "include": [
     "src/**/*"
-  ]
+  ],
+  "files": [
+    "global.d.ts"
+]
 }

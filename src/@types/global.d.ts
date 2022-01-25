@@ -4,6 +4,12 @@
 import * as socketIo from 'socket.io';
 
 declare global {
-  const io: socketIo.Server;
+  let io: socketIo.Server;
   // let user_socket: socketIo.Socket;
 }
+
+// declare namespace global {
+//   export interface Request {
+//       io: socketIo.Server;
+//   }
+// }
