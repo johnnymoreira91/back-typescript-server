@@ -25,7 +25,7 @@ export default server;
 
 app.set('io', io);
 
-global.io = require('socket.io')(server, {
+(global as any).io = require('socket.io')(server, {
   cors: {
     origin: '*',
     // methods: ['GET', 'POST'],
