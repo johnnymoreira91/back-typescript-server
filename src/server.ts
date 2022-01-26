@@ -23,8 +23,6 @@ const server = app.listen(3001, () => {
 
 export default server;
 
-app.set('io', io);
-
 (global as any).io = require('socket.io')(server, {
   cors: {
     origin: '*',
