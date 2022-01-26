@@ -13,13 +13,19 @@
 //   createUser: mockCreateUseR(),
 // });
 
-// describe('user tests', () => {
-//   test('should responde 200', async () => {
-//     const response = await request(makeApp).post('/post/user').send({
-//       user: 'johnny',
-//       password: '123',
-//     });
-//     console.log(response);
-//     expect(response.status).toBe(200);
-//   });
-// });
+describe('user tests', () => {
+  // test('should responde 200', async () => {
+  //   const response = await request(makeApp).post('/post/user').send({
+  //     user: 'johnny',
+  //     password: '123',
+  //   });
+  //   console.log(response);
+  //   expect(response.status).toBe(200);
+  // });
+  test('should be 1 + 1', async () => {
+    const a = 1;
+    const b = 1;
+    const c = a + b;
+    expect(c).toBe(2);
+  });
+});
