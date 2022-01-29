@@ -16,6 +16,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "max-len": [2, 120, 2]
+        "max-len": [2, 120, 2],
+        "no-console":"off"
     }
 }
