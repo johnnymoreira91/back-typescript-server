@@ -17,6 +17,15 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+          
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "Install and test"
+          command: yarn install && yarn test && yarn lint
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
